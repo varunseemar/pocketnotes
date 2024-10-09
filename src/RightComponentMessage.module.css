@@ -1,0 +1,85 @@
+.Main{
+    width: 75vw;
+    height: 100vh;
+}
+.upper{
+    width: 100%;
+    height: 10vh;
+    background-color: #001F8B;
+    display: flex;
+    align-items: center;
+}
+.middle{
+    width: 100%;
+    height: 60vh;
+    background-color: #DAE5F5;
+    overflow-y: scroll;
+}
+.bottom{
+    width: 100%;
+    height: 30vh;
+    background-color: #001F8B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.colorcircle{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 22px;
+    align-items: center;
+    font-weight: 600;
+    font-family: Roboto;
+    margin-left: 30px;
+}
+.textareamain{
+    width: 94%;
+    height: 84%;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    margin-left: -2vw;
+}
+.textarea{
+    width: 96.4%;
+    height: 85%;
+    resize: none;
+    border-radius: 10px;
+    padding-left: 30px;
+    padding-top: 20px;
+    padding-right: 30px;
+    padding-bottom: 10px;
+    font-size: 18px;
+    font-family: Roboto;
+}
+.textarea:focus{
+    border: none;
+    outline: none;
+}
+.submitbutton{
+    position: relative;
+    z-index: 3;
+    margin-left: -3.5vw;
+    margin-top: 15vh;
+}
+.submitbutton img{
+    height: 22px;
+    width: 25px;
+}
+.middle::-webkit-scrollbar{
+    width: 8px;
+}
+.middle::-webkit-scrollbar-track{
+    background-color: #666262;
+    border-radius: 5px;
+}
+.middle::-webkit-scrollbar-thumb{
+    background-color: #FFFFFF;
+    border-radius: 5px;
+}

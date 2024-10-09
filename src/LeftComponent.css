@@ -1,0 +1,49 @@
+.headingMainLeftComp{
+    font-family: Roboto;
+    font-size: 30px;
+    color: black;
+    text-align: center;
+    margin-top: 50px;
+    font-weight: 500;
+}
+.addMainLeftComp{
+    background-color: #16008B;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    margin-left: 275px;
+    margin-top: 71vh;
+    position: absolute;
+    z-index: 10;
+}
+.addSignAddMainLeftComp{
+    color: white;
+    font-size: 65px;
+    font-family: Roboto;
+    font-weight: 500;
+    margin-left: 22px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.scrollableDiv{
+    width: 25vw;
+    height: 85vh;
+    position: absolute;
+    z-index: 5;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.scrollableDiv::-webkit-scrollbar{
+    width: 8px;
+}
+.scrollableDiv::-webkit-scrollbar-track{
+    background-color: #D9D9D9;
+    border-radius: 5px;
+}
+.scrollableDiv::-webkit-scrollbar-thumb{
+    background-color: #FFFFFF;
+    border-radius: 5px;
+}

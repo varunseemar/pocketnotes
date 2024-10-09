@@ -1,0 +1,45 @@
+.modalContainer{
+    background-color: white;
+    height: 28vh;
+    width: 35vw;
+    border-radius: 5px;
+    align-self: center;
+    margin-left: 33vw;
+}
+
+.modalHeading{
+    margin-top: 20px;
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 20px;
+    margin-left: 50px;
+}
+
+.modalGroupName{
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 18px;
+    margin-left: 50px;
+}
+
+.modalChooseColor{
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 18px;
+    margin-left: 50px;
+}
+
+.modalChooseColor > button{
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.modalFooter{
+    width: 100px;
+    text-align: center;
+    height: 25px;
+    float: right;
+    margin-right: 20px;
+    margin-top: 5px;
+    padding-top: 5px;
+}
