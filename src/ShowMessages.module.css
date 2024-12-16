@@ -18,3 +18,11 @@
     font-size: 16px;
     font-weight: 400;
 }
+.toggleTranslation{
+    margin-right: 5vh;
+}
+.deleteIcon{
+    height: 14px;
+    width: 20px;
+    margin-right: 2vw;
+}

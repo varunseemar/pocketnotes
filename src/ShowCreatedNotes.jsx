@@ -1,5 +1,7 @@
 import { useEffect,useState} from 'react';
 import styles from './ShowCreatedNotes.module.css'
+import 'regenerator-runtime/runtime'
+
 const ShowCreatedNotes = ({note,notesValueListStorage,isSelected,onSelect}) => {
 const [shortName,setShortName] = useState();
     useEffect(()=>{

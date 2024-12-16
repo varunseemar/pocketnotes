@@ -4,6 +4,9 @@ import Rightcomponent from './Rightcomponent'
 import Modal from './Modal'
 import RightComponentMessage  from './RightComponentMessage'
 import { useState} from 'react'
+import '@babel/polyfill';
+import 'regenerator-runtime/runtime';
+
 const App = ()=>{
   var notesList = [];
   var noteValueList = [];

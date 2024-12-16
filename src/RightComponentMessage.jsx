@@ -1,15 +1,22 @@
 import React from 'react'
 import styles from './RightComponentMessage.module.css'
 import { useState,useEffect } from 'react';
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import disabledsend from '/images/disabledsend.png'
 import enabledsend from '/images/enabledsend.png'
+import micon from '/images/micon.png'
+import micoff from '/images/micoff.png'
 import ShowMessages from './ShowMessages';
+import 'regenerator-runtime/runtime'
 
 const RightComponentMessage = ({notesValueListStorage,noteIndex}) => {
 const [shortName,setShortName] = useState();
 const [textMessage,setTextMessage] = useState('');
 const [sendImage,setSendImage] = useState(false);
+const [micOn,setMicOn] = useState(false);
 const [displayMessage,setDisplayMessage] = useState([]);
+const { transcript, resetTranscript, browserSupportsSpeechRecognition } = useSpeechRecognition();
+
 useEffect(()=>{
     function createNickName(note){
         if(note){
@@ -38,6 +45,38 @@ useEffect(()=>{
     setSendImage(false);
 },[notesValueListStorage])
 
+useEffect(() => {
+    if(transcript){
+      setTextMessage(transcript);
+      if(transcript.length > 0){
+        setSendImage(true);
+      } 
+      else{
+        setSendImage(false);
+      }
+    }
+},[transcript]);
+
+const startListening = () => {
+    if(browserSupportsSpeechRecognition){
+        SpeechRecognition.startListening({ continuous: true, language: 'en-US' });
+    }
+};
+const stopListening = () => {
+    SpeechRecognition.stopListening();
+};
+
+const handleMic = ()=>{
+    if(micOn){
+        stopListening();
+        setMicOn(false);
+    }
+    else{
+        startListening();
+        setMicOn(true);
+    }
+}
+
 const handleChange = (e)=>{
     setTextMessage(e.target.value);
     if(e.target.value.length > 0){
@@ -46,6 +85,25 @@ const handleChange = (e)=>{
     else{
         setSendImage(false);
     }
+}
+
+const deleteParticularMessage = (messageToDelete)=>{
+    setDisplayMessage((prevMessages) =>
+        prevMessages.filter((message) => message !== messageToDelete)
+    );
+    const messagesArray = JSON.parse(localStorage.getItem('noteMessages')) || [];
+    const updatedMessagesArray = messagesArray.map((group) => {
+      if(group.groupIndex === noteIndex){
+        return {
+          ...group,
+          groupMessages: group.groupMessages.filter(
+            (message) => message.text !== messageToDelete.text || message.time !== messageToDelete.time
+          ),
+        };
+      }
+      return group;
+    });
+    localStorage.setItem('noteMessages', JSON.stringify(updatedMessagesArray));
 }
 
 const handleSendMessage = ()=>{
@@ -96,7 +154,7 @@ const handleSendMessage = ()=>{
         <div className={styles.middle}>
             {displayMessage ? displayMessage.map((message,index)=>(
                 <div key={index}>
-                    <ShowMessages message={message} />
+                    <ShowMessages message={message} deleteParticularMessage={deleteParticularMessage}/>
                 </div>
             )) : ""}
         </div>
@@ -105,6 +163,7 @@ const handleSendMessage = ()=>{
                 <textarea value={textMessage} onChange={handleChange} placeholder='Enter your text here...........' className={styles.textarea}></textarea>
             </div>
             <div className={styles.submitbutton}>
+                <img className={styles.micImg} src={micOn ? micoff : micon} onClick={handleMic}></img>
                 <img src={sendImage ? enabledsend : disabledsend} onClick={handleSendMessage}></img>
             </div>
         </div>
