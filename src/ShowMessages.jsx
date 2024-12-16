@@ -15,7 +15,7 @@ const ShowMessages = ({message,deleteParticularMessage}) => {
         if(message && message.text && !translatedText && franc(message.text) !== 'eng'){
           setIsTranslating(true);
           try{
-            const response = await fetch('https://pocketnotesbackendproxy.onrender.com', {
+            const response = await fetch('https://pocketnotesbackendproxy.onrender.com/translate', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
