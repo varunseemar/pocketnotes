@@ -4,42 +4,55 @@
     width: 35vw;
     border-radius: 5px;
     align-self: center;
-    margin-left: 33vw;
+    margin-left: 34vw;
 }
-
 .modalHeading{
     margin-top: 20px;
     font-family: Roboto;
     font-weight: 500;
-    font-size: 20px;
-    margin-left: 50px;
+    font-size: 1.6vw;
+    margin-left: 4vw;
 }
-
 .modalGroupName{
     font-family: Roboto;
     font-weight: 500;
-    font-size: 18px;
-    margin-left: 50px;
+    font-size: 1.4vw;
+    margin-left: 4vw;
 }
-
 .modalChooseColor{
     font-family: Roboto;
     font-weight: 500;
     font-size: 18px;
-    margin-left: 50px;
+    margin-left: 0vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
 .modalChooseColor > button{
-    margin-top: 15px;
-    margin-left: 10px;
+    margin-left: 0.8vw;
+    cursor: pointer;
+}
+.modalFooter{
+    width: 10vw;
+    text-align: center;
+    height: 2.5vw;
+    font-size: 1.2vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: right;
+    font-size: 1.5vw;
+    margin-top: 0.5vw;
+    margin-right: 3vw;
+    cursor: pointer;
 }
 
-.modalFooter{
-    width: 100px;
-    text-align: center;
-    height: 25px;
-    float: right;
-    margin-right: 20px;
-    margin-top: 5px;
-    padding-top: 5px;
+@media(min-width: 768px){
+    .modalContainer{
+        width: 32vw;
+        height: 35vh;
+    }
+    .modalChooseColor{
+        font-size: 20px;
+    }
 }

@@ -20,9 +20,41 @@
 }
 .toggleTranslation{
     margin-right: 5vh;
+    cursor: pointer;
+    color: #001f8b;
 }
 .deleteIcon{
-    height: 14px;
-    width: 20px;
+    height: 18px;
+    width: 22px;
     margin-right: 2vw;
+    cursor: pointer;
+}
+.speechButton{
+    width: 34px;
+    height: 20px;
+    margin-right: 2vw;
+}
+
+@media (min-width: 768px){
+    .message{
+        margin: 3vh 3vw;
+        padding: 3vh 3vw 2vh 3vw;
+        border-radius: 8px;
+        box-shadow: 0px 0px 8px 0px #00000060;
+    }
+    .datetime{
+        font-size: 18px;
+        margin-top: 3vh;
+    }
+    .notemessage{
+        font-size: 18px;
+    }
+    .toggleTranslation{
+        margin-right: 6vh;
+        font-size: 17px;
+    }
+    .deleteIcon{
+        height: 18px;
+        width: 22px;
+    }
 }

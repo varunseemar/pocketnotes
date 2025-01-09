@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./LeftComponent.css";
 import ShowCreatedNotes from "./ShowCreatedNotes";
 
-const Leftcomponent = ({ openModal, notesListStorage, notesValueListStorage,noteIndex,setNoteIndex }) => {
+const Leftcomponent = ({ openModal, notesListStorage, notesValueListStorage, noteIndex, setNoteIndex }) => {
 
   return (
     <>
@@ -11,7 +11,7 @@ const Leftcomponent = ({ openModal, notesListStorage, notesValueListStorage,note
         <div className="scrollableDiv">
           {notesListStorage && notesListStorage.map((note, index) => (
               <div key={index}>
-                <ShowCreatedNotes note={note} notesValueListStorage={notesValueListStorage[index]} isSelected = {noteIndex === index} onSelect={()=>setNoteIndex(index)}/>
+                <ShowCreatedNotes note={note} notesValueListStorage={notesValueListStorage[index]} isSelected={noteIndex === index} onSelect={() => setNoteIndex(index)} />
               </div>
            ))}
         </div>

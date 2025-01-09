@@ -1,6 +1,7 @@
 import react from 'react'
 import "./Modal.css"
 import { useRef ,useEffect} from 'react'
+import toast from 'react-hot-toast'
 const Modal = ({closeModal,displayModal,newGroupValues,setNewGroupValues,notesList,noteValueList}) => {
     const modalContainerRef = useRef();
     function checkClickOutside(e){
@@ -62,13 +63,14 @@ const Modal = ({closeModal,displayModal,newGroupValues,setNewGroupValues,notesLi
     function handleCreate(e){
         e.preventDefault();
         if(newGroupValues.groupName === "" || newGroupValues.groupColorCode === ""){
-            alert("Please Fill in the Group Name and Choose a Color");
+            toast.error("Please Fill in the Group Name and Choose a Color");
             return;
         }
         else{
             let noteName = newGroupValues.groupName;
             saveNotes(noteName);
-            saveNoteValues(newGroupValues)
+            saveNoteValues(newGroupValues);
+            toast.success("Notes Created Successfully");
             closeModal();
             setNewGroupValues({
                 ...newGroupValues,
@@ -85,21 +87,21 @@ const Modal = ({closeModal,displayModal,newGroupValues,setNewGroupValues,notesLi
             <p>Create New Group</p>
         </div>
         <div className='modalGroupName'>
-            <p>Group Name<span><input value={newGroupValues.groupName} type='text' name="groupName" placeholder='Enter Group Name' onChange={handleInput} style={{borderRadius:"12px",border:"1px solid grey",marginLeft:"30px",width:"300px",height:"30px",paddingLeft:"20px"}}></input></span></p>
+            <p>Group Name<span><input value={newGroupValues.groupName} type='text' name="groupName" placeholder='Enter Group Name' onChange={handleInput} style={{borderRadius:"12px",border:"1px solid grey",marginLeft:"30px",width:"13vw",height:"30px",paddingLeft:"20px",fontSize:"1.2vw"}}></input></span></p>
         </div>
         <div className='modalChooseColor' style={{display:"flex"}}>
-            <p>Choose Color</p>
-            <button name="groupColorCode" onClick={handleColorSelection} style={{height:"25px",width:"25px",borderRadius:"50%",backgroundColor:"#B38BFA",marginLeft:"40px",border:"1px solid #B38BFA"}} >
+            <p style={{fontSize:"1.4vw"}}>Choose Color</p>
+            <button name="groupColorCode" onClick={handleColorSelection} style={{height:"1.6vw",width:"1.6vw",borderRadius:"50%",backgroundColor:"#B38BFA",marginLeft:"2vw",border:"1px solid #B38BFA"}} >
             </button>
-            <button name="groupColorCode" onClick={handleColorSelection} style={{height:"25px",width:"25px",borderRadius:"50%",backgroundColor:"#FF79F2",border:"1px solid #FF79F2"}}>
+            <button name="groupColorCode" onClick={handleColorSelection} style={{height:"1.6vw",width:"1.6vw",borderRadius:"50%",backgroundColor:"#FF79F2",border:"1px solid #FF79F2"}}>
             </button>
-            <button name="groupColorCode" onClick={handleColorSelection} style={{height:"25px",width:"25px",borderRadius:"50%",backgroundColor:"#43E6FC",border:"1px solid #43E6FC"}}>
+            <button name="groupColorCode" onClick={handleColorSelection} style={{height:"1.6vw",width:"1.6vw",borderRadius:"50%",backgroundColor:"#43E6FC",border:"1px solid #43E6FC"}}>
             </button>
-            <button name="groupColorCode" onClick={handleColorSelection} style={{height:"25px",width:"25px",borderRadius:"50%",backgroundColor:"#F19576",border:"1px solid #F19576"}}>
+            <button name="groupColorCode" onClick={handleColorSelection} style={{height:"1.6vw",width:"1.6vw",borderRadius:"50%",backgroundColor:"#F19576",border:"1px solid #F19576"}}>
             </button>
-            <button name="groupColorCode" onClick={handleColorSelection} style={{height:"25px",width:"25px",borderRadius:"50%",backgroundColor:"#0047FF",border:"1px solid #0047FF"}}>
+            <button name="groupColorCode" onClick={handleColorSelection} style={{height:"1.6vw",width:"1.6vw",borderRadius:"50%",backgroundColor:"#0047FF",border:"1px solid #0047FF"}}>
             </button>
-            <button name="groupColorCode" onClick={handleColorSelection} style={{height:"25px",width:"25px",borderRadius:"50%",backgroundColor:"#6691FF",border:"1px solid #6691FF"}}>
+            <button name="groupColorCode" onClick={handleColorSelection} style={{height:"1.6vw",width:"1.6vw",borderRadius:"50%",backgroundColor:"#6691FF",border:"1px solid #6691FF"}}>
             </button>
         </div>
         <div className='modalFooter' onClick={handleCreate} style={{backgroundColor:"#001F8B",color:"white",borderRadius:"8px"}}>

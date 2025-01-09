@@ -32,7 +32,7 @@ const [shortName,setShortName] = useState();
         <div style={{backgroundColor:`${notesValueListStorage.groupColorCode}`}} className={styles.colorcircle}>
             {shortName}
         </div>
-        <p style={{marginLeft:"30px",textTransform:"capitalize",fontFamily:"Roboto",fontWeight:"600"}}>{notesValueListStorage.groupName}</p>
+        <p style={{marginLeft:"4vw",textTransform:"capitalize",fontFamily:"Roboto",fontWeight:"600",fontSize:"1.2vw"}}>{notesValueListStorage.groupName}</p>
     </div>
   )
 }

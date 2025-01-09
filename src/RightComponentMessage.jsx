@@ -8,6 +8,7 @@ import micon from '/images/micon.png'
 import micoff from '/images/micoff.png'
 import ShowMessages from './ShowMessages';
 import 'regenerator-runtime/runtime'
+import toast from 'react-hot-toast'
 
 const RightComponentMessage = ({notesValueListStorage,noteIndex}) => {
 const [shortName,setShortName] = useState();
@@ -70,10 +71,15 @@ const handleMic = ()=>{
     if(micOn){
         stopListening();
         setMicOn(false);
+        setTextMessage(transcript);
+        resetTranscript();
+        toast.success('Listening stopped');
     }
     else{
+        resetTranscript();
         startListening();
         setMicOn(true);
+        toast.success('Listening started');
     }
 }
 
@@ -104,9 +110,14 @@ const deleteParticularMessage = (messageToDelete)=>{
       return group;
     });
     localStorage.setItem('noteMessages', JSON.stringify(updatedMessagesArray));
+    toast.success('Note deleted successfully');
 }
 
 const handleSendMessage = ()=>{
+    if(micOn){
+        stopListening();
+        setMicOn(false);
+    }
     if(textMessage.length < 1 || sendImage === false){
         return;
     }
@@ -141,6 +152,8 @@ const handleSendMessage = ()=>{
     setDisplayMessage((prevMessages)=>[...(prevMessages || []), messageWithTimestamp]);
     setTextMessage('');
     setSendImage(false);
+    resetTranscript();
+    toast.success('Note added successfully');
 }
 
   return (

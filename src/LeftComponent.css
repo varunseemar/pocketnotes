@@ -1,49 +1,64 @@
 .headingMainLeftComp{
     font-family: Roboto;
-    font-size: 30px;
+    font-size: 2.3vw;
     color: black;
     text-align: center;
-    margin-top: 50px;
     font-weight: 500;
+    margin-top: 0px;
+    padding-top: 50px;
 }
 .addMainLeftComp{
     background-color: #16008B;
-    height: 80px;
-    width: 80px;
+    height: 6vw;
+    width: 6vw;
     border-radius: 50%;
-    margin-left: 275px;
-    margin-top: 71vh;
+    margin-left: 16.5vw;
+    margin-top: 68vh;
     position: absolute;
     z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 .addSignAddMainLeftComp{
     color: white;
-    font-size: 65px;
+    font-size: 5vw;
     font-family: Roboto;
     font-weight: 500;
-    margin-left: 22px;
-    margin-top: 0px;
-    margin-bottom: 0px;
 }
-
 .scrollableDiv{
     width: 25vw;
-    height: 85vh;
+    height: 83vh;
     position: absolute;
     z-index: 5;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
 }
-
 .scrollableDiv::-webkit-scrollbar{
     width: 8px;
 }
 .scrollableDiv::-webkit-scrollbar-track{
-    background-color: #D9D9D9;
+    background-color: #7a7676;
     border-radius: 5px;
 }
 .scrollableDiv::-webkit-scrollbar-thumb{
-    background-color: #FFFFFF;
+    background-color: #e0e0e0;
     border-radius: 5px;
+}
+
+@media(min-width: 768px){
+    .mainLeftComp{
+        width: 25vw;
+        height: 100vh;
+    }
+
+    .addMainLeftComp{
+        margin-left: 16.5vw;
+    }
+
+    .scrollableDiv{
+        width: 25vw;
+    }
 }

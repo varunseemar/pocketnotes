@@ -3,6 +3,7 @@ import { useState,useEffect } from 'react';
 import styles from './ShowMessages.module.css';
 import deleteNote from '/images/delete.png';
 import {franc} from 'franc';
+import speech from '/images/speech.png';
 import 'regenerator-runtime/runtime'
 
 const ShowMessages = ({message,deleteParticularMessage}) => {
@@ -51,6 +52,10 @@ const ShowMessages = ({message,deleteParticularMessage}) => {
               setNeedsTranslation(false);
             }
         }
+        return () => {
+          window.speechSynthesis.cancel();
+        };
+
     },[message]);
 
     const toggleText = () => {
@@ -60,16 +65,26 @@ const ShowMessages = ({message,deleteParticularMessage}) => {
         setShowOriginal((prev) => !prev);
     };
 
+    const handleSpeech = () => {
+        window.speechSynthesis.cancel();
+        const textToSpeak = showOriginal ? message.text : translatedText || message.text;
+        const lang = showOriginal ? franc(message.text) === 'und' ? 'en-US' : franc(message.text) : 'en-US';
+        const utterance = new SpeechSynthesisUtterance(textToSpeak);
+        utterance.lang = lang;
+        window.speechSynthesis.speak(utterance);
+    };
+
     return (
         <div className={styles.message}>
             <div className={styles.notemessage}>{isTranslating ? 'Translating...' : showOriginal ? message.text : translatedText || message.text}</div>
             <div className={styles.datetime}>
-                <img className={styles.deleteIcon} src={deleteNote} onClick={deleteMessage}></img>
                 {needsTranslation && (
                     <div className={styles.toggleTranslation} onClick={toggleText}>
                     {showOriginal ? "Show Translation" : "Show Original"}
                     </div>
                 )}
+                <img className={styles.deleteIcon} src={deleteNote} onClick={deleteMessage}></img>
+                <img src={speech} onClick={handleSpeech} className={styles.speechButton}></img>
                 {message.date}&nbsp;&nbsp;&nbsp;&nbsp;&#9679;&nbsp;&nbsp;&nbsp;&nbsp;
                 {message.time}
             </div>
